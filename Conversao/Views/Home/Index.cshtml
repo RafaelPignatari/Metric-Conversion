@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+     @model RespostaViewModel;
+
+<div class="container">
+    <form asp-action="converteDistancia">
+        Digite a distância em metros a ser convertida:
+        <input type="number" name="numero" value="@Model?.Converter" class="form-control" placeholder="Digite o valor em metros"/>
+        <br />
+        Escolha a unidade para converter:
+        <select id="medida" name="medida" selected="@Model?.Index" class="form-control">
+            <option value="cm">Centímetros</option>
+            <option value="mm">Milímetros</option>
+            <option value="km">Quilometros</option>
+            <option value="pe">Pés</option>
+            <option value="milha">Milhas</option>
+        </select>
+        @if (Model?.Index != null)
+        {
+            <br />
+            <p>Resultado:</p>
+            <input type="text" name="resultado" value="Valor de m para @Model?.Index = @Model?.Resultado" readonly class="form-control"/>
+        }
+
+        <br />
+        <input type="submit" value="Converter" class="btn btn-dark w-100"/>
+    </form>
+</div>
